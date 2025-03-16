@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+   
+    tools {
+        maven 'maven3.9.9'
+    }
+    stages {
+        
+        stage('Git Checkout') {
+            steps {
+              git branch: 'devlopment', credentialsId: 'a15c4ecc-a553-463b-b977-783249e3488e', url: 'https://github.com/vsgana/maven-web-app-project-kk-funda.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+       } 
+}
+    
